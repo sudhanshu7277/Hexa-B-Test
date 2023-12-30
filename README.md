@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 
+Key points: 
+
+1) Have used the latest version of Angular
+2) Application (Git repo) is public
+3) Have used font awesome icons as per availability from the free versions, therefore, You will not see the exact icons.
+4) used multiple variables for the hover state of the left Nav section, keeping in mind future use of the properties for more functionality, altenative functionalities could be used.
+   
+
 ## Running the application on the local server
 
 1) Clone he repo
@@ -25,3 +33,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+Regards & Thanks,
+Sudhanshu 
