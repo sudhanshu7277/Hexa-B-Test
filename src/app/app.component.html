@@ -1,0 +1,309 @@
+<div id="App" class="app-body">
+  <div class="notification row" *ngIf="hideNotification">
+    <div class="notificationColumn notification-text">
+      <span>{{notificationText}}</span>
+    </div>
+    <div class="notificationColumn learnMore">
+      <span class="rectangular-box">{{learnMore}}</span>
+    </div>
+    <div class="notificationColumn close-button">
+      <span class="xColor" (click)="closeNotification()">&#x2715;</span>
+    </div>
+  </div>
+  <div class="row" style="display:flex;">
+    <div class="top-left-section">
+      <div class="bank-section">
+        <span style="font-size:125%">
+          <fa-icon [icon]="faUsersRectangle"></fa-icon>
+          <span class="bank-name-text">{{hexaBank}}</span>
+          <span class="bank-left-arroy">
+            {{leftArrow}}
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="overview-section">
+      <div class="overview-search-section">
+        <span class="overview-container">
+          Overview
+        </span>
+        <span class="search-container">
+          <form class="no-submit">
+            <input class="no-submit" type="search" placeholder="Search anything here...">
+          </form>
+        </span>
+        <span class="message-bell-container">
+          <span class="message">
+            <fa-icon [icon]="faMessage"></fa-icon>
+          </span>
+          <span class="bell">
+            <fa-icon [icon]="faBell"></fa-icon>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="display:flex;">
+    <div class="first-section" style="margin-top:2%">
+      <div class="avatar-name-section">
+        <span class="avatar-section">
+          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+        </span>
+        <span class="avatar-section" style="display:inline-block;">
+          <span>{{clientName}}</span>
+        </span>
+        <span class="upArrow">
+          <i class="arrow up"></i>
+        </span>
+        <span class="downArrow">
+          <i class="arrow down"></i>
+        </span>
+      </div>
+      <div class="seperator-line">
+      </div>
+      <div class="menu-section">
+        <div class="menu-text">
+          {{menuText}}
+        </div>
+      </div>
+      <div [ngClass]="overView ? 'on-hover-overview-styles' : 'menu-overview-section'"
+        (mouseenter)="onMouseEnter('overview')" (mouseleave)="onMouseOut('overview')">
+        <div [ngClass]="overView ? 'circles-main-box' : 'circles-main-box-onhover-styles'">
+          <div class='circles-container'>
+            <span [ngClass]="overView ? 'circles-styled circle_1' : 'circles circle_1'"></span>
+            <span [ngClass]="overView ? 'circles-styled circle_2' : 'circles circle_2'"></span>
+            <span [ngClass]="overView ? 'circles-styled circle_3' : 'circles circle_3'"></span>
+            <span [ngClass]="overView ? 'circles-styled circle_4' : 'circles circle_4'"></span>
+          </div>
+        </div>
+        <div class="overview-text-box" [ngClass]="overView ? 'overview-text-box-onhover-styles' : 'overview-text-box'">
+          {{OverviewText}}
+        </div>
+      </div>
+      <div class="menu-transaction-section" (mouseenter)="onMouseEnter('transaction')"
+        (mouseleave)="onMouseOut('transaction')">
+        <div [ngClass]="transactionsection ? 'transaction-main-container-hovered' : 'transaction-main-container'">
+          <span class="fa-newspaper-icon-box">
+            <fa-icon [icon]="faNewspaper"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="transactionsection ? 'transaction-text-box-styled' : 'transaction-text-box'">
+          {{TransactionsText}}
+        </div>
+      </div>
+      <div class="menu-section" (mouseenter)="onMouseEnter('analytics')" (mouseleave)="onMouseOut('analytics')">
+        <div [ngClass]="analyticsSection ? 'analytics-main-container-hovered' : 'analytics-main-container'">
+          <span class="fa-address-icon-box">
+            <fa-icon [icon]="faAddressCard"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="analyticsSection ? 'analytics-text-container-hovered' : 'analytics-text-container'">
+          {{analyticsText}}
+        </div>
+      </div>
+      <div class="menu-section" (mouseenter)="onMouseEnter('cards')" (mouseleave)="onMouseOut('cards')">
+        <div [ngClass]="cardsSection ? 'cards-main-container-hovered' : 'cards-main-container'">
+          <span class="fa-credit-card-box">
+            <fa-icon [icon]="faCreditCard"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="cardsSection ? 'cards-text-box-hovered' : 'cards-text-box'">
+          {{cardsText}}
+        </div>
+      </div>
+      <div class="seperator-line">
+      </div>
+      <div class="cards-menu-section">
+        <div class="menu-text">
+          {{generalText}}
+        </div>
+      </div>
+      <div class="general-menu-section" (mouseenter)="onMouseEnter('settings')" (mouseleave)="onMouseOut('settings')">
+        <div [ngClass]="settingsSection ? 'settings-main-container-hovered' : 'settings-main-container'">
+          <span class="fa-credit-card-box">
+            <fa-icon [icon]="faGear"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="settingsSection ? 'general-text-box-hovered' : 'general-text-box'">
+          {{settingsText}}
+        </div>
+      </div>
+      <div class="help-menu-section" (mouseenter)="onMouseEnter('help')" (mouseleave)="onMouseOut('help')">
+        <div [ngClass]="helpSection ? 'help-main-container-hovered' : 'help-main-container'">
+          <span class="fa-credit-card-box">
+            <fa-icon [icon]="faHandsHelping"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="helpSection ? 'help-text-box-hovered' : 'help-text-box'">
+          {{helpSupportText}}
+        </div>
+      </div>
+      <div class="darkLight-menu-section" (mouseenter)="onMouseEnter('darkLight')"
+        (mouseleave)="onMouseOut('darkLight')">
+        <div [ngClass]="darkLightSection ? 'darkLight-main-container-hovered' : 'darkLight-main-container'">
+          <span class="fa-credit-card-box">
+            <fa-icon [icon]="faLightbulb"></fa-icon>
+          </span>
+        </div>
+        <div [ngClass]="darkLightSection ? 'help-text-box-hovered' : 'help-text-box'">
+          {{darkText}}
+        </div>
+      </div>
+    </div>
+    <div class="card-section">
+      <span class="card-section-container">{{myCards}}</span>
+      <span class="left-arrow">
+        {{leftArrow}}</span>
+      <span class="right-arrow">
+        {{rightArrow}}
+      </span>
+      <div>
+        <img class="credit-card" src={{creditCard}} />
+        <div class="add-new-card">
+          <fa-icon [icon]="faPlusCircle"></fa-icon>
+          {{addNewCard}}
+        </div>
+        <div class="seperator-line">
+        </div>
+      </div>
+      <div class="quick-actions">
+        {{quickActions}}
+      </div>
+      <div class="actions-container">
+        <span class="quick-action-items">
+          <fa-icon [icon]="faPlusSquare"></fa-icon>
+          <span class="color-black">{{tapUp}}</span>
+        </span>
+        <span class="quick-action-items">
+          <fa-icon [icon]="faPlane"></fa-icon>
+          <span class="color-black">{{transfer}}</span>
+        </span>
+        <span class="quick-action-withdrawl">
+          <fa-icon [icon]="faRandom"></fa-icon>
+          <span class="color-black">{{withdrawl}}</span>
+        </span>
+      </div>
+      <div class="seperator-line">
+      </div>
+      
+      <div class="savings-plan">
+        <span style="float: left;">{{savingPlan}}</span>
+        <span style="margin-left: 35%;">
+          <fa-icon [icon]="faPlusCircle"></fa-icon>
+        </span>
+      </div>
+      <div class="watch-actions-container">
+        <div class="row watch-actions">
+          <span class="watch-item-one">
+            <span class="stopwatch-span">
+              <fa-icon [icon]="faStopwatch"></fa-icon>
+            </span>
+          </span>
+          <span class="watch-items-two">
+            <span class="color-black">{{newWatch}}</span> <br>
+            <span style="color: grey">{{target}} {{twoK | currency: 'USD'}}</span>
+          </span>
+          <span class="watch-items-three">
+            <span style="color: grey">...</span>
+          </span>
+        </div>
+        <div class="row">
+          <div style="text-align:left;
+              font-weight: bold;">
+            <span>{{total}} {{OneK | currency: 'USD'}}</span>
+            <div class="meter">
+              <span [ngStyle]="{'width': fiftyPercent}"><span class="progress"></span></span>
+            </div>
+          </div>
+          <div class="fiftyPercentText">{{fiftyPercent}}</div>
+        </div>
+      </div>
+      <div class="watch-actions-container">
+        <div class="row watch-actions">
+          <span class="watch-item-one">
+            <span class="stopwatch-span">
+              <fa-icon [icon]="faStopwatch"></fa-icon>
+            </span>
+          </span>
+          <span class="watch-items-two">
+            <span class="color-black">{{newWatch}}</span> <br>
+            <span style="color: grey">{{target}} {{twoK | currency: 'USD'}}</span>
+          </span>
+          <span class="watch-items-three">
+            <span style="color: grey">...</span>
+          </span>
+        </div>
+        <div class="row">
+          <div style="text-align:left;
+              font-weight: bold;">
+            <span>{{total}} {{OneK | currency: 'USD'}}</span>
+            <div class="meter">
+              <span [ngStyle]="{'width': fiftyPercent}"><span class="progress"></span></span>
+            </div>
+          </div>
+          <div class="fiftyPercentText">{{fiftyPercent}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="total-balance-container">
+      <div class="total-balance-section">
+        <div class="total-balance-usd">
+          <span>{{totalBalance}}</span><br><br>
+          <span>{{totalBalanceAmount | currency: 'USD'}}</span>
+          <div class="three-grey-dots">...</div>
+        </div>
+        <div class="total-balance-usd-progressBar">
+          <span>{{total}} {{OneK | currency: 'USD'}}</span>
+          <div class="meter">
+            <span [ngStyle]="{'width': thirtyFivePercent}"><span class="progress"></span></span>
+          </div>
+        </div>
+        <div class="monthly-payment-limit">{{monthlyPaymentLimit}}</div>
+        <div class="monthly-dollar-numbers">
+          <span style="color: #000000">{{tenThousandFiveHundred | currency: 'USD'}}</span>
+          <span style="color: lightgrey">{{thirtyFiveThousand | currency: 'USD'}}</span>
+        </div>
+      </div>
+      <div class="total-balance-section">
+        <div class="total-balance-usd">
+          <span>{{moneyStatistics}}</span><br><br>
+          <span>{{totalBalanceAmount | currency: 'USD'}}</span>
+          <div class="three-grey-dots">...</div>
+        </div>
+        <div class="row">
+          <div class="column" style="width:28%">
+            <div class="color-lightgrey">{{totalIncome}}</div>
+            <div style="font-weight:bold;">{{totalIncomeAmount | currency: 'USD'}}</div>
+          </div>
+          <div class="column" style="width:28%">
+            <div class="color-lightgrey">{{totalExpense}}</div>
+            <div style="font-weight:bold;">{{totalExpenseAmount | currency: 'USD'}}</div>
+          </div>
+          <div class="column" style="width:28%">
+            <div class="color-lightgrey">{{totalInvestment}}</div>
+            <div style="font-weight:bold;">{{totalInvestmentAmount | currency: 'USD'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="total-balance-section">
+        <div class="total-balance-usd">
+          <span>{{totalBalance}}</span><br><br>
+          <span>{{totalBalanceAmount | currency: 'USD'}}</span>
+          <div class="three-grey-dots">...</div>
+        </div>
+        <div class="total-balance-usd-progressBar">
+          <span>{{total}} {{OneK | currency: 'USD'}}</span>
+          <div class="meter">
+            <span [ngStyle]="{'width': thirtyFivePercent}"><span class="progress"></span></span>
+          </div>
+        </div>
+        <div class="monthly-payment-limit">{{monthlyPaymentLimit}}</div>
+        <div class="monthly-dollar-numbers">
+          <span style="color: #000000">{{tenThousandFiveHundred | currency: 'USD'}}</span>
+          <span style="color: lightgrey">{{thirtyFiveThousand | currency: 'USD'}}</span>
+        </div>
+        <chart-comp></chart-comp>
+      </div>
+    </div>
+  </div>
+</div>
